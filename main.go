@@ -20,8 +20,8 @@ const (
 
 // Message message struct
 type Message struct {
-	Payload map[string]interface{} `json:"payload"`
-	Topic   string                 `json:"topic"`
+	Payload map[string]interface{} `json:"mqtt_payload"`
+	Topic   string                 `json:"mqtt_topic"`
 }
 
 func main() {
@@ -43,6 +43,7 @@ func main() {
 		log.Fatal(err)
 	}
 
+	//get os env
 	http.ListenAndServe(":5151", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		var msg Message
 
