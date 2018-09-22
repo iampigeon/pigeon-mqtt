@@ -4,6 +4,7 @@ import (
 	"crypto/tls"
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"math/rand"
 	"net/http"
@@ -43,8 +44,12 @@ func main() {
 
 		fmt.Println("llego")
 
+		b, _ := ioutil.ReadAll(r.Body)
+		fmt.Println(string(b))
+
 		if err := json.NewDecoder(r.Body).Decode(&msg); err != nil {
 			http.Error(w, "bad request2", http.StatusBadRequest)
+			fmt.Println("BOOM HERE")
 			fmt.Println(err)
 			return
 		}
@@ -60,5 +65,6 @@ func main() {
 		if token.Wait() && token.Error() != nil {
 			log.Fatal(token.Error())
 		}
+		fmt.Println("camilito skt1")
 	}))
 }
