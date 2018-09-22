@@ -12,12 +12,6 @@ import (
 	"github.com/WiseGrowth/wisebot-operator/iot"
 )
 
-const (
-	iotHost     = ""
-	certificate = ""
-	privateKey  = ""
-)
-
 // Message message struct
 type Message struct {
 	Payload map[string]interface{} `json:"mqtt_payload"`
