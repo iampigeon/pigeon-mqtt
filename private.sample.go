@@ -1,7 +1,7 @@
 package main
 
-const (
-	iotHost     = ""
-	certificate = ""
-	privateKey  = ""
-)
+// const (
+// 	iotHost     = ""
+// 	certificate = ""
+// 	privateKey  = ""
+// )
