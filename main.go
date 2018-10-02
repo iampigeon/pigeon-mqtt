@@ -73,7 +73,7 @@ func (s *service) Deliver(content []byte) error {
 
 func main() {
 	host := flag.String("host", "", "host of the service")
-	port := flag.Int("port", 5151, "host of the service")
+	port := flag.Int("port", 9010, "host of the service")
 	flag.Parse()
 
 	cert, err := tls.X509KeyPair([]byte(certificate), []byte(privateKey))
@@ -104,27 +104,4 @@ func main() {
 	if err := backend.ListenAndServe(pigeon.NetAddr(addr), svc); err != nil {
 		log.Fatal(err)
 	}
-
-	//get os env
-	//http.ListenAndServe(":5151", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-	//var msg Message
-
-	//fmt.Println("llego")
-
-	//b, _ := ioutil.ReadAll(r.Body)
-	//fmt.Println(string(b))
-
-	//if err := json.NewDecoder(r.Body).Decode(&msg); err != nil {
-	//http.Error(w, "bad request2", http.StatusBadRequest)
-	//fmt.Println("BOOM HERE")
-	//fmt.Println(err)
-	//return
-	//}
-
-	//fmt.Printf("%#v\n", msg)
-
-	//b, err := json.Marshal(msg.Payload)
-	//if err != nil {
-	//log.Fatal(err)
-	//}
 }
