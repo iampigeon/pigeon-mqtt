@@ -2,6 +2,6 @@ FROM golang:alpine
 
 COPY /bin/pigeon-mqtt /
 WORKDIR /
-EXPOSE 5151
+EXPOSE 9010
 
 CMD ["./pigeon-mqtt"]
