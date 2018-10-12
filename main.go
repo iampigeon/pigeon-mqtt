@@ -15,12 +15,6 @@ import (
 	"github.com/iampigeon/pigeon/backend"
 )
 
-// Message message struct
-type Message struct {
-	Payload map[string]interface{} `json:"mqtt_payload"`
-	Topic   string                 `json:"mqtt_topic"`
-}
-
 type service struct {
 	Client *iot.Client
 }
@@ -31,7 +25,7 @@ func (s *service) Approve(content []byte) (valid bool, err error) {
 	}
 
 	fmt.Println(string(content))
-	m := new(Message)
+	m := new(pigeon.MQTT)
 
 	err = json.Unmarshal(content, m)
 	if err != nil {
@@ -50,7 +44,7 @@ func (s *service) Deliver(content []byte) error {
 		log.Println("service unavailable")
 	}
 
-	m := new(Message)
+	m := new(pigeon.MQTT)
 	err := json.Unmarshal(content, m)
 	if err != nil {
 		return err
